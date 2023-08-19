@@ -5,16 +5,13 @@ import sys
 import argparse
 import base64
 import json
-from enum import Enum
 from datetime import datetime
 
-class Format(Enum):
-    uBookmark = 'ubookmark'
-    buchen = 'buchen'
-    html = 'html'
 
-    def __str__(self):
-        return self.value
+UBOOKMARK = 'ubookmark'
+BUCHEN = 'buchen'
+HTML = 'html'
+FORMATS = [UBOOKMARK, BUCHEN, HTML]
 
 
 def toUBookmark(data):
@@ -77,11 +74,11 @@ def main():
         help='the uBookmark file path'
     )
 
-    parser.add_argument('--format', type=Format, choices=list(Format))
+    parser.add_argument('--format', type=str, choices=FORMATS)
 
     args = parser.parse_args()
 
-    if args.format == Format.html:
+    if args.format == HTML:
         print("[x] bookmark HTML format support is not ready")
         sys.exit(1)
 
@@ -89,9 +86,9 @@ def main():
         with open(args.backup_file, "r") as backup:
             data = json.loads(base64.b64decode(backup.read()))
 
-            if args.format == Format.uBookmark:
+            if args.format == UBOOKMARK:
                 toUBookmark(data)
-            elif args.format == Format.buchen:
+            elif args.format == BUCHEN:
                 bookmarks = data.get("Bookmarks", None)
 
                 if bookmarks:
