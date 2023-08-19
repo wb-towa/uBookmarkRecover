@@ -9,11 +9,11 @@ This file will extract your data in various formats
 
 1. A plain uBookmark JSON file (i.e. it will just base64 decode it)
 2. The Buchen JSON import format ( [Buchen for iOS, iPad and macOS](https://apps.apple.com/app/buchen-bookmark-manager/id1549093588?platform=iphone))
-3. **TODO** The bookmark html format - this is the one you want to import your data into any browser including [Buchen](https://apps.apple.com/app/buchen-bookmark-manager/id1549093588?platform=iphone)
+3. The bookmark html format - this is the one you want to import your data into any browser or the app [Buchen](https://apps.apple.com/app/buchen-bookmark-manager/id1549093588?platform=iphone)
 
 ## Usage
 
-`python export.py <backup file> --format <buchen or ubookmark>`
+`python export.py <backup file> --format <buchen or ubookmark or html>`
 
 Example:
 
